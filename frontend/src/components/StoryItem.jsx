@@ -3,7 +3,11 @@ import React from "react";
 export default function StoryItem({ item }) {
   if (!item) return null;
   return (
-    <article className="story" style={{ padding: 12 }}>
+    <article
+  className="story"
+  data-testid="article-item"
+  style={{ padding: 12 }}
+>
       <a href={item.url || "#"} target="_blank" rel="noreferrer">
         <h3 style={{ margin: 0 }}>{item.title}</h3>
       </a>

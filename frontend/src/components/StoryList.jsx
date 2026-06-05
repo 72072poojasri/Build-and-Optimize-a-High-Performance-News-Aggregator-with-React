@@ -3,7 +3,8 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import StoryItem from "./StoryItem";
 
 export default function StoryList({ items = [] }) {
-  const parentRef = useRef();
+  const parentRef = useRef(null);
+
   const rowVirtualizer = useVirtualizer({
     count: items.length,
     getScrollElement: () => parentRef.current,
@@ -12,15 +13,27 @@ export default function StoryList({ items = [] }) {
   });
 
   return (
-    <div ref={parentRef} style={{ height: "70vh", overflow: "auto" }}>
+    <div
+      ref={parentRef}
+      data-testid="article-list"
+      style={{
+        height: "70vh",
+        overflow: "auto",
+      }}
+    >
       <div
-        style={{ height: rowVirtualizer.getTotalSize(), position: "relative" }}
+        style={{
+          height: rowVirtualizer.getTotalSize(),
+          position: "relative",
+        }}
       >
         {rowVirtualizer.getVirtualItems().map((virtualRow) => {
           const item = items[virtualRow.index];
+
           return (
             <div
               key={item?.id ?? virtualRow.index}
+              data-testid="article-item"
               style={{
                 position: "absolute",
                 top: virtualRow.start,

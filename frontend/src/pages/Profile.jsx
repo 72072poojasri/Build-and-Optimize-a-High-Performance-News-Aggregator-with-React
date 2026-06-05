@@ -5,7 +5,7 @@ export default function Profile() {
     <section>
       <h1>Profile</h1>
       <div>
-        <strong>DAKSHAYANI KALE</strong>
+        <strong>Pooja</strong>
         <div>
           Build and Optimize a High-Performance News Aggregator with React
         </div>
